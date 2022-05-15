@@ -28,7 +28,7 @@ public class FiliereController {
     public String ajouterFiliere(Model model) {
     	newFiliere = new Filiere();
     	model.addAttribute("newFiliere", newFiliere);
-    	return"filiere-ajouter";
+    	return"Filière/filiere-ajouter";
     }
     
     @PostMapping("enregistrer-filiere")
@@ -41,28 +41,28 @@ public class FiliereController {
 	public String ListeFiliere(Model model) {
 		allFiliere = filieresDao.findAll() ;
 		model.addAttribute("allFiliere", allFiliere) ;
-		return "filiere-liste" ;
+		return "Filière/filiere-liste" ;
 	}
     
     @GetMapping("filiere-detail")
 	public String filiereDetail(Model model, @RequestParam Long id) {
 		filiereDetail = filieresDao.findById(id).get() ;
 		model.addAttribute("filiereDetail",filiereDetail) ;
-		return "filiere-detail" ;
+		return "Filière/filiere-detail" ;
 	}
     
     @GetMapping("/modifier-filiere")
 	public String Modifierfiliere(Model model) {
 		newFiliere = filiereDetail ;
 		model.addAttribute("newFiliere", newFiliere) ;
-		return "filiere-modifier" ;
+		return "Filière/filiere-modifier" ;
 	}
     
     @GetMapping("/modifier-filiere-2")
 	public String Modifierfiliere2(Model model, @RequestParam Long id) {
     	newFiliere = filieresDao.findById(id).get() ;
 		model.addAttribute("newFiliere", newFiliere) ;
-		return "filiere-modifier" ;
+		return "Filière/filiere-modifier" ;
 	}
     
     @PostMapping("update-filiere")
