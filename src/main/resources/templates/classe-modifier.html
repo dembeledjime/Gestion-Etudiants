@@ -1,0 +1,57 @@
+<div th:replace="StartPage"> </div>
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Ajouter/Modifier une Classee</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Classe</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3 col-md-10" style="margin-left: 5%;">
+
+            <form method="post" th:object="${newClasse}" th:action="@{update-classe}">
+  <div class="form-group">
+    <label>Nom</label>
+    <input type="text" class="form-control" th:field="*{nom}">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+     <textarea class="form-control" rows="2" th:field="*{description}"></textarea>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Niveau</label>
+      <select class="form-control" th:field="*{niveau}">
+        <option value="1e Annee">1e Annee</option>
+        <option value="2e Annee">2e Annee</option>
+        <option value="Licence">Licence</option>
+        <option value="Master 1">Master 1</option>
+        <option value="Master 2">Master 2</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Filiere</label>
+      <select class="form-control" th:field="*{nomFiliere}">
+        <option th:each="filiere : ${allFilieres}" th:value="${filiere.nom}" th:text="${filiere.nom}"></option>
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success">Mise a Jour</button>
+</form>
+            
+
+        </div> <!-- .content -->
+
+<div th:replace="EndPage"> </div>

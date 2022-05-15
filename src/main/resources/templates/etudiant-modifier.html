@@ -1,0 +1,99 @@
+<div th:replace="StartPage"> </div>
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Ajouter/Modifier un Etudiant</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Etudiants</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content mt-3 col-md-10" style="margin-left: 2%; margin-right: 3%;">
+
+            
+            <form method="post" th:object="${newEtudiant}" th:action="@{update-etudiant(id=${newEtudiant.id})}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nom :</label>
+      <input type="text" class="form-control" th:field="*{nom}" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Prenom :</label>
+      <input type="text" class="form-control" th:field="*{prenom}" required>
+    </div>
+  </div>
+  <div class="form-group col-md-6">
+    <label>Adresse :</label>
+    <input type="text" class="form-control" th:field="*{adresse}">
+  </div>
+  <div class="form-group col-md-4">
+    <label>Ville :</label>
+    <input type="text" class="form-control" th:field="*{ville}">
+  </div>
+  <div class="form-group col-md-2">
+      <label>Code Postale :</label>
+      <input type="text" class="form-control" th:field="*{codePostale}">
+    </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label>Email :</label>
+    <input type="email" class="form-control" th:field="*{email}">
+  </div>
+  <div class="form-group col-md-6">
+    <label>Telephone :</label>
+    <input type="text" class="form-control" th:field="*{tel}">
+  </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Classe :</label>
+      <select class="form-control" th:field="*{classe}">
+        <option th:each="classe:${allClasses}" th:value="${classe.nomAvecNiveau}" th:text="${classe.nomAvecNiveau}"></option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+    <label>Matricule :</label>
+    <input type="text" class="form-control" th:field="*{matricule}" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Date de Naissance :</label>
+      <input type="date" class="form-control" th:field="*{dateNaissance}">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Sexe :</label>
+      <select class="form-control" th:field="*{sexe}">
+        <option value="Homme" >Homme</option>
+        <option value="Femme">Femme</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label>Age :</label>
+      <input type="number" class="form-control" th:field="*{age}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nationalite :</label>
+    <input type="text" class="form-control" th:field="*{nationalite}">
+  </div>
+
+  <button style="margin-bottom: 5%;" type="submit" class="btn btn-success">Mise a Jour</button>
+</form>
+
+        </div> <!-- .content -->
+
+
+
+<div th:replace="EndPage"> </div>
