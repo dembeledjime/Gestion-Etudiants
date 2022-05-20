@@ -17,6 +17,6 @@ public class Mensualite {
 	private double montant ;
 	private String description ;
 	private String date ;
-	private String schoolYear ;
+	private String anneeScolaire ;
 	private String matriculeEtudiant ;
 }

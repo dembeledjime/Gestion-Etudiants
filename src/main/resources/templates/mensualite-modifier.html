@@ -24,7 +24,7 @@
 	<form method="post" th:object="${newMensualite}"
 		th:action="@{update-mensualite(id=${newMensualite.id})}">
 		<div class="form-group">
-			<label>Montant (En â‚¬)</label> <input type="number" class="form-control" min="1"
+			<label>Montant (En €)</label> <input type="number" class="form-control" min="1"
 				th:field="*{montant}">
 		</div>
 		<div class="form-group">
