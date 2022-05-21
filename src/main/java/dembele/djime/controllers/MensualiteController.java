@@ -37,7 +37,7 @@ public class MensualiteController {
 		newMensualite.setDate(date);
 		
 		model.addAttribute("newMensualite", newMensualite) ;
-		return "mensualite-ajouter" ;
+		return "/Mensualité/mensualite-ajouter" ;
 	} 
 	
 	
@@ -60,7 +60,7 @@ public class MensualiteController {
 		model.addAttribute("allMensualites",mensualitesDao.findByMatriculeEtudiant(mensualiteReçu.getMatriculeEtudiant())) ;
 		newMensualite = new Mensualite() ;
 		
-		return "etudiant-detail" ;
+		return "/Etudiant/etudiant-detail" ;
 	}
 	
 	@GetMapping("modifier-mensualite")
@@ -68,7 +68,7 @@ public class MensualiteController {
 		Mensualite mensualite = mensualitesDao.findById(id).get() ;
 		newMensualite = mensualite ;
 		model.addAttribute("newMensualite", mensualite) ;
-		return "mensualite-modifier" ;
+		return "/Mensualité/mensualite-modifier" ;
 	}
 	
 	@PostMapping("update-mensualite")
@@ -86,7 +86,7 @@ public class MensualiteController {
 		model.addAttribute("etudiantDetail", etudiantDetail ) ;
 		model.addAttribute("allMensualites",mensualitesDao.findByMatriculeEtudiant(mensualiteReçu.getMatriculeEtudiant())) ;
 		newMensualite = new Mensualite() ;
-		return "etudiant-detail" ;
+		return "/Etudiant/etudiant-detail" ;
 	}
 	
 	@GetMapping("supprimer-mensualite")
@@ -102,7 +102,7 @@ public class MensualiteController {
 		model.addAttribute("etudiantDetail", etudiantDetail ) ;
 		model.addAttribute("allMensualites",mensualitesDao.findByMatriculeEtudiant(mensualiteReçu.getMatriculeEtudiant())) ;
 		newMensualite = new Mensualite() ;
-		return "etudiant-detail" ;
+		return "/Etudiant/etudiant-detail" ;
 	}
 	
 	

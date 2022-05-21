@@ -41,7 +41,7 @@ public class EtudiantController {
 		newEtudiant = new Etudiant() ;
 		model.addAttribute("allClasses", classesDao.findAll()) ;
 		model.addAttribute("newEtudiant", newEtudiant) ;
-		return "etudiant-ajouter" ;
+		return "/Etudiant/etudiant-ajouter" ;
 	}
 	
 	@PostMapping("enregistrer-etudiant")
@@ -65,7 +65,7 @@ public class EtudiantController {
 	public String ListeEtudiant(Model model) {
 		allEtudiants = etudiantsDao.findAll() ;
 		model.addAttribute("allEtudiants", allEtudiants) ;
-		return "etudiant-liste" ;
+		return "/Etudiant/etudiant-liste" ;
 	}
 	
 	@GetMapping("etudiant-detail")
@@ -73,7 +73,7 @@ public class EtudiantController {
 		etudiantDetail = etudiantsDao.findById(id).get() ;
 		model.addAttribute("etudiantDetail",etudiantDetail) ;
 		model.addAttribute("allMensualites",mensualitesDao.findByMatriculeEtudiant(etudiantDetail.getMatricule())) ;
-		return "etudiant-detail" ;
+		return "/Etudiant/etudiant-detail" ;
 	}
 	
 	@GetMapping("/modifier-etudiant")
@@ -81,7 +81,7 @@ public class EtudiantController {
 		newEtudiant = etudiantDetail ;
 		model.addAttribute("allClasses", classesDao.findAll()) ;
 		model.addAttribute("newEtudiant", newEtudiant) ;
-		return "etudiant-modifier" ;
+		return "Etudiant/etudiant-modifier" ;
 	}
 	
 	@PostMapping("update-etudiant")
@@ -103,7 +103,7 @@ public class EtudiantController {
 		newEtudiant = etudiantsDao.findById(id).get() ;
 		model.addAttribute("allClasses", classesDao.findAll()) ;
 		model.addAttribute("newEtudiant", newEtudiant) ;
-		return "etudiant-modifier" ;
+		return "/Etudiant/etudiant-modifier" ;
 	}
 	
 	@GetMapping("/supprimer-etudiant-2")

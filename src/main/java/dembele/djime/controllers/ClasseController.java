@@ -51,7 +51,7 @@ public class ClasseController {
 		newClasse = new Classe() ;
 		model.addAttribute("newClasse", newClasse) ;
 		model.addAttribute("allFilieres", filieresDao.findAll()) ;
-		return "classe-ajouter" ;
+		return "/Classe/classe-ajouter" ;
 	}
 	
 	@PostMapping("enregistrer-classe")
@@ -66,7 +66,7 @@ public class ClasseController {
 			model.addAttribute("classe_already_exist", classe_already_exist) ;
 			model.addAttribute("newClasse", classe) ;
 			model.addAttribute("allFilieres", filieresDao.findAll()) ;
-			return "classe-ajouter" ;
+			return "/Classe/classe-ajouter" ;
 		}
 		
 		
@@ -80,7 +80,7 @@ public class ClasseController {
 			classesDao.save(classe) ;
 		}) ;
 		model.addAttribute("allClasses", allClasses) ;
-		return "classe-liste" ;
+		return "/Classe/classe-liste" ;
 	}
 	
 	@GetMapping("classe-detail")
@@ -88,7 +88,7 @@ public class ClasseController {
 		classeDetail = classesDao.findById(id).get() ;
 		model.addAttribute("classeDetail",classeDetail) ;
 		model.addAttribute("allEtudiants",etudiantsDao.findByClasse(classeDetail.getNomAvecNiveau())) ;
-		return "classe-detail" ;
+		return "/Classe/classe-detail" ;
 	}
 	
 	@GetMapping("/modifier-classe")
@@ -96,7 +96,7 @@ public class ClasseController {
 		newClasse = classeDetail ;
 		model.addAttribute("newClasse", newClasse) ;
 		model.addAttribute("allFilieres", filieresDao.findAll()) ;
-		return "classe-modifier" ;
+		return "/Classe/classe-modifier" ;
 	}
 	
 	@PostMapping("update-classe")

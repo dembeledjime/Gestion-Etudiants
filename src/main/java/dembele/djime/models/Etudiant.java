@@ -18,7 +18,6 @@ public class Etudiant {
 	private String prenom ;
 	private String sexe ;
 	private String dateNaissance ;
-	private int age ;
 	private String adresse ;
 	private String ville;
 	private int codePostale;
