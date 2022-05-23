@@ -1,45 +1,51 @@
-<div th:replace="StartPage"> </div>
+<div th:replace="StartPage"></div>
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Liste des Classes</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Tableau de bord</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="breadcrumbs">
+	<div class="col-sm-4">
+		<div class="page-header float-left">
+			<div class="page-title">
+				<h1>Liste des Classes</h1>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8">
+		<div class="page-header float-right">
+			<div class="page-title">
+				<ol class="breadcrumb text-right">
+					<li class="active">Tableau de bord</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
 
-        <div class="content mt-3">
+<div class="content mt-3">
 
-            <div class="col-lg-3 col-md-6" th:each="classe:${allClasses}">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-four">
-                            <div class="stat-icon dib">
-                                <img src="images/people.svg" height="40px"></img>
-                            </div>
-                            <div class="stat-content">
-                                <div class="text-left dib">
-                                    <div class="stat-heading"><a style="color: black;" th:href="@{/classe-detail(id=${classe.id})}" th:text="${classe.nom}"> </a></div>
-                                    <div class="stat-text" th:text="'Nbre Etudiant : '+${classe.nbreEtudiant}"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+	<div class="col-lg-3 col-md-6" th:each="classe:${allClasses}">
+		<div class="card">
+			<div class="card-body">
+				<div class="stat-widget-four">
+					<div class="stat-icon dib">
+						<img src="images/people.svg" height="40px"></img>
+					</div>
+					<div class="stat-content">
+						<div class="text-left dib">
+							<div class="stat-heading">
+								<a style="color: black;"
+									th:href="@{/classe-detail(id=${classe.id})}"
+									th:text="${classe.nom}"> </a>
+							</div>
+							<div class="stat-text"
+								th:text="'Nbre Etudiant : '+${classe.nbreEtudiant}"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-        </div> <!-- .content -->
 
-<div th:replace="EndPage"> </div>
+</div>
+<!-- .content -->
+
+<div th:replace="EndPage"></div>

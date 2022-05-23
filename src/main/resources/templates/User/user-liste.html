@@ -42,12 +42,15 @@
 										th:href="@{/user-detail(username=${user.username})}"
 										th:text="${user.username}"> </a></td>
 									<td th:text="${user.authority}"></td>
-									
-									<td>
-                        <a th:href="@{/user-detail(username=${user.username})}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                        <a th:href="@{/modifier-user-2(username=${user.username})}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a th:href="@{/supprimer-user-2(username=${user.username})}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      </td>
+
+									<td><a
+										th:href="@{/user-detail(username=${user.username})}"
+										class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+										<a th:href="@{/modifier-user-2(username=${user.username})}"
+										class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+										<a th:href="@{/supprimer-user-2(username=${user.username})}"
+										class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+									</td>
 								</tr>
 							</tbody>
 						</table>

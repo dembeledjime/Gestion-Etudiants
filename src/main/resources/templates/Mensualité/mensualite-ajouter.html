@@ -24,8 +24,8 @@
 	<form method="post" th:object="${newMensualite}"
 		th:action="@{enregistrer-mensualite}">
 		<div class="form-group">
-			<label>Montant (En €)</label> <input type="number" class="form-control" min="1"
-				th:field="*{montant}">
+			<label>Montant (En €)</label> <input type="number"
+				class="form-control" min="1" th:field="*{montant}">
 		</div>
 		<div class="form-group">
 			<label>Description</label>

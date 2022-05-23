@@ -1,39 +1,41 @@
-<div th:replace="StartPage"> </div>
+<div th:replace="StartPage"></div>
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Ajouter/Modifier une Filiere</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Filiere</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="breadcrumbs">
+	<div class="col-sm-4">
+		<div class="page-header float-left">
+			<div class="page-title">
+				<h1>Ajouter/Modifier une Filiere</h1>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-8">
+		<div class="page-header float-right">
+			<div class="page-title">
+				<ol class="breadcrumb text-right">
+					<li class="active">Filiere</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
 
-        <div class="content mt-3 col-md-10" style="margin-left: 5%;">
+<div class="content mt-3 col-md-10" style="margin-left: 5%;">
 
-            <form method="post" th:object="${newFiliere}" th:action="@{update-filiere(id=${newFiliere.id})}">
-  <div class="form-group">
-    <label>Nom</label>
-    <input type="text" class="form-control" th:field="*{nom}">
-  </div>
-  <div class="form-group">
-    <label>Description</label>
-     <textarea class="form-control" rows="2" th:field="*{description}"></textarea>
-  </div>
-  <button type="submit" class="btn btn-success">Mise a Jour</button>
-</form>
-            
+	<form method="post" th:object="${newFiliere}"
+		th:action="@{update-filiere(id=${newFiliere.id})}">
+		<div class="form-group">
+			<label>Nom</label> <input type="text" class="form-control"
+				th:field="*{nom}">
+		</div>
+		<div class="form-group">
+			<label>Description</label>
+			<textarea class="form-control" rows="2" th:field="*{description}"></textarea>
+		</div>
+		<button type="submit" class="btn btn-success">Mise a Jour</button>
+	</form>
 
-        </div> <!-- .content -->
 
-<div th:replace="EndPage"> </div>
+</div>
+<!-- .content -->
+
+<div th:replace="EndPage"></div>

@@ -104,9 +104,5 @@ public class MensualiteController {
 		newMensualite = new Mensualite() ;
 		return "/Etudiant/etudiant-detail" ;
 	}
-	
-	
-	
-	
-	
+
 }

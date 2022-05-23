@@ -13,4 +13,7 @@ public class Authorities {
 	@Id
 	private String username ;
 	private String authority ;
+	
+	
+	
 }

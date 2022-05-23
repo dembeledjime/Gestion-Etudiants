@@ -1,60 +1,60 @@
-<div th:replace="StartPage"> </div>
+<div th:replace="StartPage"></div>
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Filiere</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-                    <!-- row -->
-        <div class="row mt" style="margin: 3%;">
-            <div class="col-md-12">
-              <div class="content-panel">
-                <table class="table table-striped table-advance table-hover">
-                  <h4>Liste des Filieres</h4>
-                  <thead>
-                    <tr>
-                      <th>Nom</th>
-                      <th>Description</th>
-                      <th>action</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr th:each="filiere:${allFiliere}">
-                      <td>
-                        <a th:href="@{/filiere-detail(id=${filiere.id})}" th:text="${filiere.nom}"> </a> 
-                      </td>
-                      <td th:text="${filiere.description}"></td>
-                      
-                      <td>
-                        <a th:href="@{/filiere-detail(id=${filiere.id})}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
-                        <a th:href="@{/modifier-filiere-2(id=${filiere.id})}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                        <a th:href="@{/supprimer-filiere-2(id=${filiere.id})}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /content-panel -->
-            </div>
-            <!-- /col-md-12 -->
-          </div>
-          <!-- /row -->
-            
+<div class="breadcrumbs">
+	<div class="col-sm-4">
+		<div class="page-header float-left">
+			<div class="page-title"></div>
+		</div>
+	</div>
+	<div class="col-sm-8">
+		<div class="page-header float-right">
+			<div class="page-title">
+				<ol class="breadcrumb text-right">
+					<li class="active">Filiere</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
 
 
-<div th:replace="EndPage"> </div>
+<!-- row -->
+<div class="row mt" style="margin: 3%;">
+	<div class="col-md-12">
+		<div class="content-panel">
+			<table class="table table-striped table-advance table-hover">
+				<h4>Liste des Filieres</h4>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Description</th>
+						<th>action</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="filiere:${allFiliere}">
+						<td><a th:href="@{/filiere-detail(id=${filiere.id})}"
+							th:text="${filiere.nom}"> </a></td>
+						<td th:text="${filiere.description}"></td>
+
+						<td><a th:href="@{/filiere-detail(id=${filiere.id})}"
+							class="btn btn-success btn-xs"><i class="fa fa-check"></i></a> <a
+							th:href="@{/modifier-filiere-2(id=${filiere.id})}"
+							class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a> <a
+							th:href="@{/supprimer-filiere-2(id=${filiere.id})}"
+							class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- /content-panel -->
+	</div>
+	<!-- /col-md-12 -->
+</div>
+<!-- /row -->
+
+
+
+<div th:replace="EndPage"></div>

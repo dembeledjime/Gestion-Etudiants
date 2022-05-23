@@ -16,52 +16,43 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource) ; // Permet de prendre les usrs depuis la Base de données dont les infos de connexion sont dans datasource de application.properties
+		auth.jdbcAuthentication().dataSource(dataSource); // Permet de prendre les usrs depuis la Base de données dont
+															// les infos de connexion sont dans datasource de
+															// application.properties
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() { // Permet d'utiliser un password encoder pour Spring (Obligatoire)
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
-	public JdbcUserDetailsManager jdbcUserDetailsManager() throws Exception { // Code recupé depuis Internet pour ajouter un User
+	public JdbcUserDetailsManager jdbcUserDetailsManager() throws Exception { // Code recupé depuis Internet pour
+																				// ajouter un User
 		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
 		jdbcUserDetailsManager.setDataSource(dataSource);
 		return jdbcUserDetailsManager;
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
+		// c'est cette methode qui me permet de configuer la securité niveau http
+		// qui va utliser un page de connexion
 		http.formLogin();
+		// ces ligne permet de faire une autorisation sur les url par rapport aux
+		// aux user et leur role les 2 etoiles permet de dire tous ce qui vient avant ou
+		// apres
 		http.authorizeRequests().antMatchers("/**classe", "/**-filiere").hasAnyRole("USER", "ADMIN");
 		http.authorizeRequests()
 				.antMatchers("/enregistrer**", "/supprimer**", "/ajouter**", "/modifier**", "/update**", "/register")
 				.hasRole("ADMIN");
-		
-		
-		
-		
-		
-		
-		
-		
 		http.authorizeRequests().anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/error-403");
-			
-		
-		
-		
-		
-		
-		
-		
-		
-		// Derniere ligne pour ajouter une page personnalisé d'error 403 (il faut mapper dans le controller le /error-403) 
-		
-		
+		// Derniere ligne pour ajouter une page personnalisé d'error 403 (il faut mapper
+		// dans le controller le /error-403)
+
 	}
 
 }
