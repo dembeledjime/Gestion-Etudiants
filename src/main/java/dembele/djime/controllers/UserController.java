@@ -59,7 +59,7 @@ public class UserController {
 
 	@RequestMapping("error-403")
 	public String error403() {
-		return "/User/500.html";
+		return "/500.html";
 	}
 
 	@GetMapping("/users")
@@ -70,7 +70,7 @@ public class UserController {
 			users.add(user);
 		});
 		model.addAttribute("allUsers", users);
-		return "/User/user-liste";
+		return "/user-liste";
 	}
 
 	@GetMapping("user-detail")
@@ -78,7 +78,7 @@ public class UserController {
 		userDetail = userDao.findByUsername(username);
 		userDetail.setAuthority(authorityDao.findByUsername(userDetail.getUsername()).getAuthority());
 		model.addAttribute("userDetail", userDetail);
-		return "/User/user-detail";
+		return "/user-detail";
 	}
 
 	@GetMapping("/modifier-user")
@@ -86,7 +86,7 @@ public class UserController {
 		oldUsername = userDetail.getUsername();
 		newUser = userDetail;
 		model.addAttribute("newUser", newUser);
-		return "/User/user-modifier";
+		return "/user-modifier";
 	}
 
 	@GetMapping("/modifier-user-2")
@@ -94,7 +94,7 @@ public class UserController {
 		oldUsername = username;
 		newUser = userDao.findByUsername(username);
 		model.addAttribute("newUser", newUser);
-		return "/User/user-modifier";
+		return "/user-modifier";
 	}
 
 	@PostMapping("update-user")
