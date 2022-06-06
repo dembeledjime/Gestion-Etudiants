@@ -58,8 +58,7 @@ public class EtudiantController {
 		newMensualite.setDate(date);
 		mensualitesDao.save(newMensualite);
 		etudiantsDao.save(etudiant);
-		return ListeEtudiant(model);
-	}
+		return ListeEtudiant(model);}
 
 	@GetMapping("/liste-etudiant")
 	public String ListeEtudiant(Model model) {

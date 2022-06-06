@@ -26,80 +26,80 @@
      La methode va utiliser un obejt newEtudiant qu'on va utilisé th pour ça  
      Et lorsque le formulaire va enregistrer les infos  il va envoyer vers un url
    qu'on indique par th:action et l'url qui sera mapper dans le controlller    -->
-	<form method="post" th:object="${newEtudiant}"
-		th:action="@{enregistrer-etudiant}">
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Nom :</label> <input type="text" class="form-control"
-					th:field="*{nom}" required>
+		<form method="post" th:object="${newEtudiant}"
+			th:action="@{enregistrer-etudiant}">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Nom :</label> <input type="text" class="form-control"
+						th:field="*{nom}" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Prenom :</label> <input type="text" class="form-control"
+						th:field="*{prenom}" required>
+				</div>
 			</div>
 			<div class="form-group col-md-6">
-				<label>Prenom :</label> <input type="text" class="form-control"
-					th:field="*{prenom}" required>
-			</div>
-		</div>
-		<div class="form-group col-md-6">
-			<label>Adresse :</label> <input type="text" class="form-control"
-				th:field="*{adresse}">
-		</div>
-		<div class="form-group col-md-4">
-			<label>Ville :</label> <input type="text" class="form-control"
-				th:field="*{ville}">
-		</div>
-		<div class="form-group col-md-2">
-			<label>Code Postale :</label> <input type="text" class="form-control"
-				th:field="*{codePostale}">
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Email :</label> <input type="email" class="form-control"
-					th:field="*{email}">
-			</div>
-			<div class="form-group col-md-6">
-				<label>Telephone :</label> <input type="text" class="form-control"
-					th:field="*{tel}">
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Classe :</label> <select class="form-control"
-					th:field="*{classe}">
-					<option th:each="classe:${allClasses}"
-						th:value="${classe.nomAvecNiveau}"
-						th:text="${classe.nomAvecNiveau}"></option>
-				</select>
-			</div>
-			<div class="form-group col-md-6">
-				<label>Matricule :</label> <input type="text" class="form-control"
-					th:field="*{matricule}" required>
-			</div>
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label>Date de Naissance :</label> <input type="date"
-					class="form-control" th:field="*{dateNaissance}">
+				<label>Adresse :</label> <input type="text" class="form-control"
+					th:field="*{adresse}">
 			</div>
 			<div class="form-group col-md-4">
-				<label>Sexe :</label> <select class="form-control"
-					th:field="*{sexe}">
-					<option value="Homme">Homme</option>
-					<option value="Femme">Femme</option>
-				</select>
+				<label>Ville :</label> <input type="text" class="form-control"
+					th:field="*{ville}">
 			</div>
-		</div>
-		<div class="form-group">
-			<label>Nationalite :</label> <input type="text" class="form-control"
-				th:field="*{nationalite}">
-		</div>
-
-		<div class="form-group">
-			<label>Scolarite Payee (En €) :</label> <input type="number"
-				class="form-control" th:field="*{totalMensualite}" required>
-		</div>
-
-		<button style="margin-bottom: 5%;" type="submit"
-			class="btn btn-success">Enregistrer</button>
-	</form>
+			<div class="form-group col-md-2">
+				<label>Code Postale :</label> <input type="text" class="form-control"
+					th:field="*{codePostale}">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Email :</label> <input type="email" class="form-control"
+						th:field="*{email}">
+				</div>
+				<div class="form-group col-md-6">
+					<label>Telephone :</label> <input type="text" class="form-control"
+						th:field="*{tel}">
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Classe :</label> <select class="form-control"
+						th:field="*{classe}">
+						<option th:each="classe:${allClasses}"
+							th:value="${classe.nomAvecNiveau}"
+							th:text="${classe.nomAvecNiveau}"></option>
+					</select>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Matricule :</label> <input type="text" class="form-control"
+						th:field="*{matricule}" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Date de Naissance :</label> <input type="date"
+						class="form-control" th:field="*{dateNaissance}">
+				</div>
+				<div class="form-group col-md-4">
+					<label>Sexe :</label> <select class="form-control"
+						th:field="*{sexe}">
+						<option value="Homme">Homme</option>
+						<option value="Femme">Femme</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Nationalite :</label> <input type="text" class="form-control"
+					th:field="*{nationalite}">
+			</div>
+	
+			<div class="form-group">
+				<label>Scolarite Payee (En euro) :</label> <input type="number"
+					class="form-control" th:field="*{totalMensualite}" required>
+			</div>
+	
+			<button style="margin-bottom: 5%;" type="submit"
+				class="btn btn-success">Enregistrer</button>
+		</form>
 
 </div>
 <!-- .content -->

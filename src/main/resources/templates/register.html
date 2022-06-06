@@ -20,29 +20,27 @@
 	</div>
 </div>
 
-<div class="content mt-3 col-md-10" style="margin-left: 5%;">
-
-	<form th:action="@{register}" method="post" th:object="${user}">
-		<div class="form-group">
-			<label>Enter username</label> <input type="text" class="form-control"
-				th:field="*{username}">
+		<div class="content mt-3 col-md-10" style="margin-left: 5%;">
+		
+			<form th:action="@{register}" method="post" th:object="${user}">
+				<div class="form-group">
+					<label>Enter username</label> <input type="text" class="form-control"
+						th:field="*{username}">
+				</div>
+				<div class="form-group">
+					<label>Enter password</label> <input type="password"
+						class="form-control" th:field="*{password}">
+				</div>
+				<div class="form-group">
+					<label>Role :</label> <select class="form-control"
+						th:field="*{authority}">
+						<option value="USER">USER</option>
+						<option value="ADMIN">ADMIN</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-success">Enregistrer</button>
+			</form>
 		</div>
-		<div class="form-group">
-			<label>Enter password</label> <input type="password"
-				class="form-control" th:field="*{password}">
-		</div>
-		<div class="form-group">
-			<label>Role :</label> <select class="form-control"
-				th:field="*{authority}">
-				<option value="USER">USER</option>
-				<option value="ADMIN">ADMIN</option>
-			</select>
-		</div>
-		<button type="submit" class="btn btn-success">Enregistrer</button>
-	</form>
-
-
-</div>
 <!-- .content -->
 
 <div th:replace="EndPage"></div>
