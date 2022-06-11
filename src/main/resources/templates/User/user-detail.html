@@ -4,7 +4,7 @@
 		<div class="col-sm-4">
 			<div class="page-header float-left">
 				<div class="page-title">
-					<h1>Détail d'une Filière</h1>
+					<h1>Detail d'un utilisateur</h1>
 				</div>
 			</div>
 		</div>
@@ -12,7 +12,7 @@
 			<div class="page-header float-right">
 				<div class="page-title">
 					<ol class="breadcrumb text-right">
-						<li class="active">Filiere</li>
+						<li class="active">Utilisateur</li>
 					</ol>
 				</div>
 			</div>
@@ -20,16 +20,23 @@
 	</div>
 	
 	<div class="content mt-3 col-md-10" style="margin-left: 5%;">
+	
+	
 		<div class="form-group">
-			<label>Nom : </label> <strong th:text="${filiereDetail.nom}">
+			<label>Nom d'uilisateur : </label> <strong
+				th:text="${userDetail.username}"> </strong>
+		</div>
+		<div class="form-group">
+			<label>Role : </label> <strong th:text="${userDetail.authority}">
 			</strong>
 		</div>
-		<div class="form-group">
-			<label>Description : </label> <strong
-				th:text="${filiereDetail.description}"> </strong>
-		</div>
 		<div class="form-row"></div>
-		<a th:href="@{/modifier-filiere}" class="btn btn-success">Modifier</a>
-		<a th:href="@{/supprimer-filiere}" class="btn btn-danger ml-3">Supprimer</a>
+		<a th:href="@{/modifier-user}" class="btn btn-success">Modifier</a> <a
+			th:href="@{/supprimer-user}" class="btn btn-danger ml-3">Supprimer</a>
+	
+	
+	
 	</div>
+	<!-- .content -->
+	
 	<div th:replace="footer"></div>
