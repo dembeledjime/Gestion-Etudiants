@@ -26,6 +26,8 @@ public class MensualiteController {
 	
 	Mensualite newMensualite = new Mensualite() ;
 
+	//lorsqu'on envoi ajouter-mensualité dès qu'on clique sur l'étudiantDetaillé 
+	//on cree une nouvelle mentualité on lui met le mat de l'etudiant
 	@GetMapping("ajouter-mensualite")
 	public String ajouterMensualite(Model model, @RequestParam("matricule") String matriculeEtudiant) {
 		
@@ -41,21 +43,32 @@ public class MensualiteController {
 	} 
 	
 	
+	
+	
 	@PostMapping("enregistrer-mensualite")
 	public String save(Model model, @ModelAttribute Mensualite mensualiteReçu) {
 		
+		//52,53,54permettent de recuperer la new mensual et la date ensuite le sauvegarder
 		mensualiteReçu.setDate(newMensualite.getDate());
 		mensualiteReçu.setMatriculeEtudiant(newMensualite.getMatriculeEtudiant());
 		mensualitesDao.save(mensualiteReçu) ;
 		
-		
+		//on veux calculer le nbre total de la mentual que l'etudiant a payé
+		//on prend le nombre total de la mensual et le remettre a 0 
+		//et recalcule en fonction de tout ce qui est dans la bdd
 		Etudiant etudiantDetail = etudiantsDao.findByMatricule(mensualiteReçu.getMatriculeEtudiant()) ;
 		etudiantDetail.setTotalMensualite(0);
+		
+		//on recupere tous les mensuals qui ont la matricule de l'etudiant en question.
+		//un foreach qui va me parcours la collection mensualité
 		mensualitesDao.findByMatriculeEtudiant(mensualiteReçu.getMatriculeEtudiant()).forEach(mensualite -> {
+			//calcule le totalMensual
 			etudiantDetail.setTotalMensualite(etudiantDetail.getTotalMensualite() + mensualite.getMontant()) ;
 		});
 		etudiantsDao.save(etudiantDetail) ;
 		
+		//on envoi l'etudiant et toutes ces mensualités et je renvoi dans la vue 
+		// avant de renvoyé on cree un new objet de la Mensualité pour remetre a 0 sinon la prochaine fois que je vais ajouter une new mensual ça va me remener les anciens valeurs
 		model.addAttribute("etudiantDetail", etudiantDetail ) ;
 		model.addAttribute("allMensualites",mensualitesDao.findByMatriculeEtudiant(mensualiteReçu.getMatriculeEtudiant())) ;
 		newMensualite = new Mensualite() ;

@@ -21,6 +21,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource); 
 	}
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.formLogin();
+		http.authorizeRequests().antMatchers("/**classe", "/**-filiere").hasAnyRole("USER", "ADMIN");
+		http.authorizeRequests()
+				.antMatchers("/enregistrer**", "/supprimer**", "/ajouter**", "/modifier**", "/update**", "/register")
+				.hasRole("ADMIN");
+		http.authorizeRequests().anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/error-403");
+		
+	}
+
+
 
 	@Bean
 	public PasswordEncoder passwordEncoder() { 
@@ -32,17 +45,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
 		jdbcUserDetailsManager.setDataSource(dataSource);
 		return jdbcUserDetailsManager;
-	}
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin();
-		http.authorizeRequests().antMatchers("/**classe", "/**-filiere").hasAnyRole("USER", "ADMIN");
-		http.authorizeRequests()
-				.antMatchers("/enregistrer**", "/supprimer**", "/ajouter**", "/modifier**", "/update**", "/register")
-				.hasRole("ADMIN");
-		http.authorizeRequests().anyRequest().authenticated().and().exceptionHandling().accessDeniedPage("/error-403");
-		
 	}
 
 }

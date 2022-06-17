@@ -44,18 +44,19 @@ import com.siglab.models.Users;
 			return new ModelAndView("register", "user", new Users());
 		}
 	
-		@RequestMapping(value = "/register", method = RequestMethod.POST)
-		public ModelAndView processRegister(@ModelAttribute("user") Users userRegister) {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-			authorities.add(new SimpleGrantedAuthority("ROLE_" + userRegister.getAuthority()));
-			User user = new User(userRegister.getUsername(),
-					passwordEncoder.encode(userRegister.getPassword()), authorities);
-	
+		@RequestMapping(value = "/register", method = RequestMethod.POST) // Methode recupérée depuis Internet pour enregistrer un user depuis le formulaire 
+	 	public ModelAndView processRegister(@ModelAttribute("user") Users userRegistrationObject) { //  Recupere le ModelAttribut du formulaire html avec le nom : userRegistrationObject
+			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>(); // Cree une liste d'authorité ou Role car 1 user peut avoir plusireur autority ou role 
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + userRegistrationObject.getAuthority())); // ajoute le role recupéré depuis le form dans la liste des authorité crée sous le prefixe ROLE_ qui correspond a la convention de nommage de spring Secrutiy
+
+			// Cree mtn un nouvel user de la classe USer de Spring lui meme en lui donnant l'username du modelAttribut, le mot de passe encodé avc notre password encodeur injecté, et la liste de ses role créé plus haut 
+			User user = new User(userRegistrationObject.getUsername(), passwordEncoder.encode( userRegistrationObject.getPassword() ), authorities); 
+			// Ajoute mtn l'user dans la DB avc le bean injecté jdbcUserDetailsManager ( code recupéré depuis Internet aussi )
 			jdbcUserDetailsManager.createUser(user);
-	
+			// Redirige mtn vers la View Home
 			return new ModelAndView("redirect:/home");
 		}
-	
+
 		@RequestMapping("error-403")
 		public String error403() {
 			return "User/500.html";
