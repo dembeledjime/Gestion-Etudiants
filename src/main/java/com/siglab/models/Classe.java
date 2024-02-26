@@ -16,6 +16,7 @@ public class Classe {
 	private Long id ;
 	private String nom ;
 	private String description ;
+
 	public Long getId() {
 		return id;
 	}
@@ -58,6 +59,7 @@ public class Classe {
 	public void setNomAvecNiveau(String nomAvecNiveau) {
 		this.nomAvecNiveau = nomAvecNiveau;
 	}
+
 	private int nbreEtudiant ;
 	private String niveau ;
 	private String nomFiliere ;

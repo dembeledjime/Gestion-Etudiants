@@ -14,6 +14,7 @@ import lombok.ToString;
 public class Etudiant {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
+
 	public Long getId() {
 		return id;
 	}
@@ -104,6 +105,7 @@ public class Etudiant {
 	public void setTotalMensualite(double totalMensualite) {
 		this.totalMensualite = totalMensualite;
 	}
+
 	private String nom ;
 	private String prenom ;
 	private String sexe ;

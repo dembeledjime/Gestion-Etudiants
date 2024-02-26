@@ -16,6 +16,7 @@ public class Users {
 	private String password ;
 	@Transient  // Signifie que l'attribut n'est pas persisté dans la DB 
 	private String authority ;
+
 	public String getUsername() {
 		return username;
 	}
@@ -34,4 +35,5 @@ public class Users {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+
 }

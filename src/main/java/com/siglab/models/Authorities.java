@@ -24,6 +24,7 @@ public class Authorities {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
+
 	private String authority ;
 	
 	

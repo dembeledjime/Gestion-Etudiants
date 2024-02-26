@@ -15,6 +15,7 @@ public class Filiere {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
 	private String nom ;
+
 	public Long getId() {
 		return id;
 	}
@@ -33,5 +34,6 @@ public class Filiere {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	private String description ;
 }

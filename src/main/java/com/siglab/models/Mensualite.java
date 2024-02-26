@@ -12,6 +12,7 @@ import lombok.ToString;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class Mensualite {
+
 	public Long getId() {
 		return id;
 	}
@@ -48,6 +49,7 @@ public class Mensualite {
 	public void setMatriculeEtudiant(String matriculeEtudiant) {
 		this.matriculeEtudiant = matriculeEtudiant;
 	}
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id ;
 	private double montant ;
