@@ -1,0 +1,61 @@
+	<div th:replace="header"></div>
+	<meta charset="utf-8">
+	
+	<script th:if="${classe_already_exist == true}">
+		alert("La Classe Existe déja !")
+	</script>
+	
+	<div class="breadcrumbs">
+		<div class="col-sm-4">
+			<div class="page-header float-left">
+				<div class="page-title">
+					<h1>Ajouter une Classee</h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="page-header float-right">
+				<div class="page-title">
+					<ol class="breadcrumb text-right">
+						<li class="active">Classe</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content mt-3 col-md-10" style="margin-left: 5%;">
+	
+		<form method="post" th:object="${newClasse}"
+			th:action="@{enregistrer-classe}">
+			<div class="form-group">
+				<label>Nom</label> <input type="text" class="form-control"
+					th:field="*{nom}" required>
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" rows="2" th:field="*{description}" required></textarea>
+			</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Niveau</label> <select class="form-control"
+							th:field="*{niveau}" required>
+							<option value="1 Année">1e Année</option>
+							<option value="2e Année">2e Année</option>
+							<option value="3e Année">3e Année</option>
+							<option value="Master 1">Master 1</option>
+							<option value="Master 2">Master 2</option>
+						</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label>Filière</label> <select class="form-control"
+							th:field="*{nomFiliere}" required>
+							<option th:each="filiere : ${allFilieres}"
+								th:value="${filiere.nom}" th:text="${filiere.nom}"></option>
+						</select>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Enregistrer</button>
+		</form>
+	</div>
+	<div th:replace="footer"></div>

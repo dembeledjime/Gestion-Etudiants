@@ -1,0 +1,65 @@
+	<div th:replace="header"></div>
+	<meta charset="utf-8">
+	<div class="breadcrumbs">
+		<div class="col-sm-4">
+			<div class="page-header float-left">
+				<div class="page-title">
+					<h1>Liste des Utilisateurs</h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="page-header float-right">
+				<div class="page-title">
+					<ol class="breadcrumb text-right">
+						<li class="active">Utilisateurs</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content mt-3">
+	
+		<div class="animated fadeIn">
+			<div class="row">
+	
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-body">
+							<table id="bootstrap-data-table-export"
+								class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>Username</th>
+										<th>ROLE</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="user:${allUsers}">
+										<td><a style="color: black;"
+											th:href="@{/user-detail(username=${user.username})}"
+											th:text="${user.username}"> </a></td>
+										<td th:text="${user.authority}"></td>
+	
+										<td><a
+											th:href="@{/user-detail(username=${user.username})}"
+											class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+											<a th:href="@{/modifier-user-2(username=${user.username})}"
+											class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+											<a th:href="@{/supprimer-user-2(username=${user.username})}"
+											class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+	
+	
+			</div>
+		</div>
+	</div>
+	<div th:replace="footer"></div>

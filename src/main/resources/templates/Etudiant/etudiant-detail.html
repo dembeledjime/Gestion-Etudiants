@@ -1,0 +1,126 @@
+	<div th:replace="header"></div>
+	<meta charset="utf-8">
+	<div class="breadcrumbs">
+		<div class="col-sm-4">
+			<div class="page-header float-left">
+				<div class="page-title">
+					<h1>Detail d'un Étudiant</h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="page-header float-right">
+				<div class="page-title">
+					<ol class="breadcrumb text-right">
+						<li class="active">Étudiant</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content mt-3 col-md-10"
+		style="margin-left: 2%; margin-right: 3%;">
+	
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label>Nom :</label> <strong th:text="${etudiantDetail.nom}">
+				</strong>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Prénom :</label> <strong th:text="${etudiantDetail.prenom}">
+				</strong>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Adresse :</label> <strong th:text="${etudiantDetail.adresse}">
+			</strong>
+		</div>
+		<div class="form-group">
+			<label>Ville :</label> <strong th:text="${etudiantDetail.ville}">
+			</strong>
+		</div>
+		<div class="form-group">
+			<label>Code Postale :</label> <strong
+				th:text="${etudiantDetail.codePostale}"> </strong>
+		</div>
+	
+		<div class="form-group">
+			<label>Email :</label> <strong th:text="${etudiantDetail.email}">
+			</strong>
+		</div>
+		<div class="form-group">
+			<label>Telephone :</label> <strong th:text="${etudiantDetail.tel}">
+			</strong>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label>Classe :</label> <strong th:text="${etudiantDetail.classe}">
+				</strong>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Filiere :</label> <strong th:text="${etudiantDetail.filiere}">
+				</strong>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Matricule :</label> <strong
+				th:text="${etudiantDetail.matricule}"> </strong>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-3">
+				<label>Date de Naissance :</label> <strong
+					th:text="${etudiantDetail.dateNaissance}"> </strong>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Sexe :</label> <strong th:text="${etudiantDetail.sexe}">
+				</strong>
+			</div>
+	
+		</div>
+	
+		<div class="form-group">
+			<label>Nationalité :</label> <strong
+				th:text="${etudiantDetail.nationalite}"> </strong>
+		</div>
+	
+		<div class="form-group">
+			<label>Scolarité Payée (En euro) :</label> <strong
+				th:text="${etudiantDetail.totalMensualite} + ' €' "> </strong>
+		</div>
+	
+		<a
+			th:href="@{/ajouter-mensualite(matricule=${etudiantDetail.matricule})}"
+			class="btn btn-primary">Ajouter une Mensualité</a> <a
+			th:href="@{/modifier-etudiant}" class="btn btn-success ml-3">Modifier</a>
+		<a th:href="@{/supprimer-etudiant}" class="btn btn-danger ml-3">Supprimer</a>
+	
+		<div style="margin-top: 80px;">
+			<table class="table table-striped table-advance table-hover"
+				style="margin-top: 20px;">
+				<h4>
+					Liste des Mensualités payées par : <strong
+						th:text="${etudiantDetail.prenom} + ' ' + ${etudiantDetail.nom}"></strong>
+				</h4>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Description</th>
+						<th>Montant</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="mensualite:${allMensualites}">
+						<td><a th:text="${mensualite.date}"> </a></td>
+						<td th:text="${mensualite.description}"></td>
+						<td th:text="${mensualite.montant}"></td>
+						<td><a th:href="@{/modifier-mensualite(id=${mensualite.id})}"
+							class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a> <a
+							th:href="@{/supprimer-mensualite(id=${mensualite.id})}"
+							class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div th:replace="footer"></div>

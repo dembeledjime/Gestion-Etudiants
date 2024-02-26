@@ -1,0 +1,91 @@
+	<div th:replace="header"></div>
+	<meta charset="utf-8">
+	<div class="breadcrumbs">
+		<div class="col-sm-4">
+			<div class="page-header float-left">
+				<div class="page-title">
+					<h1>Détail d'une Classe</h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="page-header float-right">
+				<div class="page-title">
+					<ol class="breadcrumb text-right">
+						<li class="active">Classe</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content mt-3 col-md-10" style="margin-left: 5%;">
+	
+	
+		<div class="form-group">
+			<label>Nom : </label> <strong th:text="${classeDetail.nom}">
+			</strong>
+		</div>
+		<div class="form-group">
+			<label>Description : </label> <strong
+				th:text="${classeDetail.description}"> </strong>
+		</div>
+		<div class="form-group">
+			<label>Filière : </label> <strong th:text="${classeDetail.nomFiliere}">
+			</strong>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<label>Niveau</label> <strong th:text="${classeDetail.niveau}">
+				</strong>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Nombre d'Étudiant</label> <strong
+					th:text="${classeDetail.nbreEtudiant}"> </strong>
+			</div>
+		</div>
+		<a th:href="@{/modifier-classe}" class="btn btn-success">Modifier</a> <a
+			th:href="@{/supprimer-classe}" class="btn btn-danger ml-3">Supprimer</a>
+	
+	
+	
+		<!-- row -->
+		<div style="margin-top: 80px;">
+			<table class="table table-striped table-advance table-hover"
+				style="margin-top: 20px;">
+				<h4>
+					Liste des Étudiants de la Classe : <strong
+						th:text="${classeDetail.nomAvecNiveau}"></strong>
+				</h4>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prénom(s)</th>
+						<th>Matricule</th>
+						<th>Classe</th>
+						<th>Filière</th>
+						<th>action</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="etudiant:${allEtudiants}">
+						<td><a th:href="@{/etudiant-detail(id=${etudiant.id})}"
+							th:text="${etudiant.nom}"> </a></td>
+						<td th:text="${etudiant.prenom}"></td>
+						<td th:text="${etudiant.matricule}"></td>
+						<td th:text="${etudiant.classe}"></td>
+						<td th:text="${etudiant.filiere}"></td>
+						<td><a th:href="@{/etudiant-detail(id=${etudiant.id})}"
+							class="btn btn-success btn-xs"><i class="fa fa-check"></i></a> <a
+							th:href="@{/modifier-etudiant-2(id=${etudiant.id})}"
+							class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a> <a
+							th:href="@{/supprimer-etudiant-2(id=${etudiant.id})}"
+							class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+	
+		</div>
+	</div>
+	<div th:replace="footer"></div>

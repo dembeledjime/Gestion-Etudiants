@@ -1,0 +1,97 @@
+	<div th:replace="header"></div>
+	<meta charset="utf-8">
+	<div class="breadcrumbs">
+		<div class="col-sm-4">
+			<div class="page-header float-left">
+				<div class="page-title">
+					<h1>Modifier un Étudiant</h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="page-header float-right">
+				<div class="page-title">
+					<ol class="breadcrumb text-right">
+						<li class="active">Étudiants</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content mt-3 col-md-10"
+		style="margin-left: 2%; margin-right: 3%;">
+	
+	
+		<form method="post" th:object="${newEtudiant}"
+			th:action="@{update-etudiant(id=${newEtudiant.id})}">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Nom :</label> <input type="text" class="form-control"
+						th:field="*{nom}" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Prénom :</label> <input type="text" class="form-control"
+						th:field="*{prenom}" required>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label>Adresse :</label> <input type="text" class="form-control"
+					th:field="*{adresse}" required>
+			</div>
+			<div class="form-group col-md-4">
+				<label>Ville :</label> <input type="text" class="form-control"
+					th:field="*{ville}" required>
+			</div>
+			<div class="form-group col-md-2">
+				<label>Code Postale :</label> <input type="text" class="form-control"
+					th:field="*{codePostale}" required>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Email :</label> <input type="email" class="form-control"
+						th:field="*{email}" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Telephone :</label> <input type="text" class="form-control"
+						th:field="*{tel}" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Classe :</label> <select class="form-control"
+						th:field="*{classe}" required>
+						<option th:each="classe:${allClasses}"
+							th:value="${classe.nomAvecNiveau}"
+							th:text="${classe.nomAvecNiveau}"></option>
+					</select>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Matricule :</label> <input type="text" class="form-control"
+						th:field="*{matricule}" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Date de Naissance :</label> <input type="date"
+						class="form-control" th:field="*{dateNaissance}" required>
+				</div>
+				<div class="form-group col-md-4">
+					<label>Sexe :</label> <select class="form-control"
+						th:field="*{sexe}" required>
+						<option value="Homme">Homme</option>
+						<option value="Femme">Femme</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Nationalité :</label> <input type="text" class="form-control"
+					th:field="*{nationalite}" required>
+			</div>
+	
+			<button style="margin-bottom: 5%;" type="submit"
+				class="btn btn-success">Mise à Jour</button>
+		</form>
+	
+	</div>
+	<div th:replace="footer"></div>
